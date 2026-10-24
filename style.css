@@ -1,0 +1,25 @@
+@font-face{font-family:Fraunces;src:url(/fonts/Fraunces-VariableFont.ttf);font-weight:100 900;font-display:swap}
+@font-face{font-family:"Schibsted Grotesk";src:url(/fonts/SchibstedGrotesk-VariableFont.ttf);font-weight:400 900;font-display:swap}
+:root{--paper:#FBF6EC;--oat:#F3ECDD;--line:#E3D8C2;--card:#fff;--ink:#1C2B24;--ink2:#4A4D43;--ever:#17402F;--ever-ink:#FBF6EC;--leaf:#2F7D43}
+@media (prefers-color-scheme:dark){:root{--paper:#111915;--oat:#1B2520;--line:#2E3B34;--card:#18221D;--ink:#EEF2E9;--ink2:#B9C3B6;--ever:#86D193;--ever-ink:#111915;--leaf:#86D193}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 "Schibsted Grotesk",system-ui,sans-serif}
+.wrap{max-width:680px;margin:0 auto;padding:0 16px}
+header{padding:20px 0;border-bottom:1px solid var(--line)}
+header .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.brand{font:600 22px Fraunces,serif;color:var(--ink);text-decoration:none}
+nav a{color:var(--ink2);text-decoration:none;margin-left:16px;font-size:15px}
+nav a:hover{color:var(--leaf)}
+h1,h2{font-family:Fraunces,serif;line-height:1.2}
+h1{font-size:clamp(30px,6vw,42px);margin:40px 0 8px}
+h2{font-size:22px;margin:32px 0 6px}
+p,li{color:var(--ink2)}
+a{color:var(--leaf)}
+.lede{font-size:19px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px;margin:28px 0}
+.card h2{margin-top:0}
+.badge{display:inline-block;margin-top:8px;padding:12px 20px;border-radius:12px;background:var(--ever);color:var(--ever-ink);font-weight:600;text-decoration:none}
+.badge.soon{opacity:.7}
+footer{border-top:1px solid var(--line);margin-top:56px;padding:24px 0 40px;font-size:14px;color:var(--ink2)}
+footer a{margin-right:16px}
+.meta{font-size:14px}
