@@ -1,31 +1,237 @@
-@font-face{font-family:Fraunces;src:url(/fonts/Fraunces-VariableFont.ttf);font-weight:100 900;font-display:swap}
+/* GraceDay site. Brand: Evergreen / Paper / Leaf / Gold. Fraunces for voice, Schibsted Grotesk for text. */
+@font-face{font-family:Fraunces;src:url(/fonts/Fraunces-VariableFont.ttf);font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:Fraunces;src:url(/fonts/Fraunces-Italic-VariableFont.ttf);font-weight:100 900;font-style:italic;font-display:swap}
 @font-face{font-family:"Schibsted Grotesk";src:url(/fonts/SchibstedGrotesk-VariableFont.ttf);font-weight:400 900;font-display:swap}
-:root{--paper:#FBF6EC;--oat:#F3ECDD;--line:#E3D8C2;--card:#fff;--ink:#1C2B24;--ink2:#4A4D43;--ever:#17402F;--ever-ink:#FBF6EC;--leaf:#2F7D43}
-@media (prefers-color-scheme:dark){:root{--paper:#111915;--oat:#1B2520;--line:#2E3B34;--card:#18221D;--ink:#EEF2E9;--ink2:#B9C3B6;--ever:#86D193;--ever-ink:#111915;--leaf:#86D193}}
+
+:root{
+  --paper:#FBF6EC;--oat:#F3ECDD;--line:#E3D8C2;--card:#fff;
+  --ink:#1C2B24;--ink2:#4A4D43;
+  --ever:#17402F;--ever-deep:#0F2D21;--on-ever:#FBF6EC;--on-ever-2:#B7D3BF;
+  --leaf:#5DB86A;--leaf-ink:#2F7D43;--gold:#F2B23A;--gold-ink:#8A5A00;--coral:#EF6A4A;--lilac:#C8BEF0;
+  --btn:#17402F;--btn-ink:#FBF6EC;
+  --r:22px;--max:1120px;
+}
+@media (prefers-color-scheme:dark){:root{
+  --paper:#111915;--oat:#1B2520;--line:#2E3B34;--card:#18221D;
+  --ink:#EEF2E9;--ink2:#B9C3B6;--leaf-ink:#86D193;--gold-ink:#F2B23A;
+  --btn:#86D193;--btn-ink:#111915;--ever-deep:#0B1D15;
+}}
 *{box-sizing:border-box}
-body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 "Schibsted Grotesk",system-ui,sans-serif}
-.wrap{max-width:680px;margin:0 auto;padding:0 16px}
-header{padding:20px 0;border-bottom:1px solid var(--line)}
-header .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-.brand{font:600 22px Fraunces,serif;color:var(--ink);text-decoration:none}
-nav a{color:var(--ink2);text-decoration:none;margin-left:16px;font-size:15px}
-nav a:hover{color:var(--leaf)}
-h1,h2{font-family:Fraunces,serif;line-height:1.2}
-h1{font-size:clamp(30px,6vw,42px);margin:40px 0 8px}
-h2{font-size:22px;margin:32px 0 6px}
-p,li{color:var(--ink2)}
-a{color:var(--leaf)}
-.lede{font-size:19px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px;margin:28px 0}
-.card h2{margin-top:0}
-.badge{display:inline-block;margin-top:8px;padding:12px 20px;border-radius:12px;background:var(--ever);color:var(--ever-ink);font-weight:600;text-decoration:none}
-.badge.soon{opacity:.7}
-footer{border-top:1px solid var(--line);margin-top:56px;padding:24px 0 40px;font-size:14px;color:var(--ink2)}
-footer a{margin-right:16px}
-.meta{font-size:14px}
-.flinks{display:flex;flex-wrap:wrap;gap:4px 16px;margin-bottom:12px}
-.flinks a{margin:0}
-ol{padding-left:22px;color:var(--ink2)}
-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:15px}
-th,td{text-align:left;vertical-align:top;padding:10px 8px;border-bottom:1px solid var(--line);color:var(--ink2)}
-th{color:var(--ink)}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+html,body{overflow-x:clip}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 "Schibsted Grotesk",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto}
+a{color:var(--leaf-ink)}
+a:focus-visible,summary:focus-visible,.btn:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:8px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:600;line-height:1.1;letter-spacing:-.02em;margin:0}
+h2{font-size:clamp(30px,4.6vw,48px)}
+h3{font-size:22px;letter-spacing:-.01em}
+p{margin:0 0 1em;color:var(--ink2)}
+em{font-style:italic}
+.eyebrow{font:700 13px/1 "Schibsted Grotesk",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--leaf-ink);margin:0 0 14px}
+
+/* header */
+.site-header{position:relative;z-index:5}
+.site-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:18px;padding-bottom:18px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font:600 26px/1 Fraunces,serif;letter-spacing:-.02em;color:var(--ink);text-decoration:none}
+.brand svg{width:20px;height:28px}
+.site-header nav{display:flex;align-items:center;gap:22px}
+.site-header nav a{color:var(--ink2);text-decoration:none;font-size:15px}
+.site-header nav a:hover{color:var(--leaf-ink)}
+.site-header .btn{padding:10px 18px;font-size:15px}
+.nav-links{display:flex;gap:22px}
+@media (max-width:640px){.nav-links{display:none}}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--btn);color:var(--btn-ink)!important;padding:14px 24px;border-radius:999px;font-weight:700;text-decoration:none;border:0}
+.btn:hover{filter:brightness(1.08)}
+.btn.gold{background:var(--gold);color:#1C2B24!important}
+.play-badge{display:inline-block;line-height:0;border-radius:10px}
+.play-badge img{height:64px;width:auto;display:block}
+.play-badge:hover{filter:brightness(1.1)}
+
+/* hero */
+.hero{background:var(--ever);color:var(--on-ever);overflow:hidden;position:relative}
+.hero .site-header .brand,.hero .site-header nav a{color:var(--on-ever)}
+.hero .site-header nav a:hover{color:var(--gold)}
+.hero .site-header .btn{background:var(--gold);color:#1C2B24!important}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:48px;align-items:center;padding-top:36px;padding-bottom:0}
+.hero-copy{padding-bottom:72px}
+.hero .eyebrow{color:var(--gold)}
+.hero h1{font-size:clamp(46px,8.4vw,92px);line-height:.98;letter-spacing:-.035em}
+.hero h1 em{color:var(--gold);font-weight:500;display:block}
+.hero .sub{font-size:clamp(18px,2.2vw,21px);color:var(--on-ever-2);max-width:30em;margin:22px 0 28px}
+.cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px}
+.assure{display:flex;flex-wrap:wrap;gap:6px 18px;margin:22px 0 0;padding:0;list-style:none;font-size:14.5px;color:var(--on-ever-2)}
+.assure li{color:inherit;display:flex;align-items:center;gap:7px}
+.assure li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--leaf)}
+
+/* the streak strip: the product's own artifact as the hero's proof */
+.strip-wrap{margin-top:40px;max-width:520px}
+.strip{display:flex;align-items:flex-end;gap:7px;list-style:none;margin:0;padding:0}
+.strip li{flex:1 1 0;display:flex;justify-content:center;align-items:flex-end;height:44px;animation:grow .5s cubic-bezier(.2,.9,.3,1.2) both;animation-delay:calc(var(--i)*70ms + 250ms);transform-origin:50% 100%}
+.strip svg{width:100%;max-width:22px;height:auto;color:var(--leaf)}
+.strip .rest i{display:block;width:14px;height:14px;border-radius:50%;background:var(--lilac);margin-bottom:4px}
+.strip .grace svg{color:var(--gold)}
+.strip .grace{position:relative}
+.strip .today svg{color:var(--on-ever-2)}
+@keyframes grow{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+.strip-note{display:flex;justify-content:space-between;gap:16px;margin:12px 0 0;font-size:14px;color:var(--on-ever-2)}
+.strip-note b{color:var(--gold);font-weight:700}
+.strip-note span:last-child{text-align:right}
+
+/* phones */
+.phone{background:#0E1813;border-radius:38px;padding:9px;box-shadow:0 30px 60px -20px rgba(0,0,0,.45),0 0 0 1.5px rgba(255,255,255,.08) inset;position:relative}
+.phone img{display:block;width:100%;border-radius:30px}
+.phone.light{background:#26302A}
+.hero-phones{position:relative;height:640px;align-self:end}
+.hero-phones .phone{position:absolute;width:min(300px,62%)}
+.hero-phones .p1{left:2%;bottom:-70px;transform:rotate(-3deg);z-index:2}
+.hero-phones .p2{right:0;bottom:-30px;transform:rotate(4deg);width:min(270px,56%)}
+
+/* sections */
+section{padding:96px 0}
+.head{max-width:700px;margin-bottom:48px}
+.head h2{margin-bottom:16px}
+.head p{font-size:19px}
+
+/* how grace works: a ledger, not a card grid */
+.ledger{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.ledger li{display:grid;grid-template-columns:72px 1fr auto;gap:8px 24px;align-items:start;padding:28px 0;border-bottom:1px solid var(--line)}
+.ledger .glyph{width:56px;height:56px;border-radius:18px;display:grid;place-items:center;background:var(--oat)}
+.ledger .glyph svg{width:26px;height:26px}
+.ledger h3{margin-bottom:6px}
+.ledger p{margin:0;max-width:36em}
+.tag{font:700 12px/1 "Schibsted Grotesk",sans-serif;letter-spacing:.1em;text-transform:uppercase;padding:7px 10px;border-radius:999px;background:var(--oat);color:var(--ink2);white-space:nowrap;align-self:start;justify-self:start}
+.tag.pro{background:var(--gold);color:#1C2B24}
+.rule-line{margin:28px 0 0;font:italic 500 22px/1.35 Fraunces,serif;color:var(--ink)}
+@media (max-width:640px){.ledger li{grid-template-columns:56px 1fr}.ledger .tag{grid-column:2}}
+
+/* showcases */
+.show{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.show.flip .show-copy{order:2}
+.show-copy h2{margin-bottom:16px}
+.show-copy p{font-size:18px}
+.show-copy ul{padding:0;margin:20px 0 0;list-style:none}
+.show-copy li{padding-left:26px;position:relative;margin-bottom:8px;color:var(--ink2)}
+.show-copy li::before{content:"";position:absolute;left:2px;top:.55em;width:10px;height:13px;background:var(--leaf);border-radius:70% 0 70% 0;transform:rotate(-15deg)}
+.duo{display:flex;align-items:flex-start;justify-content:center;gap:0;position:relative;padding:8px 0 24px}
+.duo .phone{width:min(260px,46%)}
+.duo .phone+.phone{margin-left:-18px;margin-top:56px}
+.duo.single .phone{width:min(300px,70%)}
+.band{background:var(--ever);color:var(--on-ever)}
+.band h2,.band .show-copy h2{color:var(--on-ever)}
+.band p,.band li{color:var(--on-ever-2)}
+.band .eyebrow{color:var(--gold)}
+.band .show-copy li::before{background:var(--gold)}
+.widgets{display:grid;gap:16px;max-width:430px;margin:0 auto}
+.widgets img{display:block;width:100%;clip-path:inset(3px round 28px);box-shadow:0 24px 50px -22px rgba(0,0,0,.45)}
+.widgets .w2{margin-left:34px;margin-top:-4px}
+
+/* plans */
+.plans{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:stretch}
+.plan{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:32px}
+.plan.pro{background:var(--ever);border-color:var(--ever);color:var(--on-ever)}
+.plan h3{font-size:30px;margin-bottom:4px}
+.plan .for{margin-bottom:20px}
+.plan.pro .for,.plan.pro li{color:var(--on-ever-2)}
+.plan.pro h3{color:var(--on-ever)}
+.plan ul{margin:0;padding:0;list-style:none}
+.plan li{padding:9px 0 9px 28px;position:relative;border-top:1px solid var(--line);color:var(--ink2)}
+.plan.pro li{border-color:rgba(255,255,255,.14)}
+.plan li::before{content:"";position:absolute;left:0;top:1.05em;width:10px;height:13px;background:var(--leaf);border-radius:70% 0 70% 0;transform:rotate(-15deg)}
+.plan.pro li::before{background:var(--gold)}
+.fine{font-size:15px;margin-top:20px}
+
+/* privacy strip */
+.private{background:var(--oat)}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+.three h3{margin-bottom:8px}
+.three p{margin:0}
+
+/* faq */
+.faq{max-width:760px}
+details{border-top:1px solid var(--line)}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;list-style:none;padding:22px 40px 22px 0;font:600 21px/1.3 Fraunces,serif;color:var(--ink);position:relative}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:4px;top:18px;font:400 30px/1 "Schibsted Grotesk",sans-serif;color:var(--leaf-ink);transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{padding:0 40px 22px 0;margin:0}
+
+/* final call */
+.final{background:var(--ever);color:var(--on-ever);text-align:center;padding:104px 0}
+.final h2{color:var(--on-ever);max-width:14em;margin:0 auto 18px}
+.final h2 em{color:var(--gold);font-weight:500}
+.final p{color:var(--on-ever-2);font-size:19px;margin-bottom:30px}
+.final .cta-row{justify-content:center}
+
+/* footer */
+.site-footer{padding:40px 0 56px;font-size:14.5px;color:var(--ink2);background:var(--paper)}
+.site-footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px}
+.flinks{display:flex;flex-wrap:wrap;gap:6px 20px}
+.flinks a{color:var(--ink2)}
+.site-footer p{margin:0;font-size:14px}
+
+/* document pages (privacy, terms, support, delete) */
+.doc-head{background:var(--ever);color:var(--on-ever)}
+.doc-head .brand,.doc-head nav a{color:var(--on-ever)}
+.doc-head nav a:hover{color:var(--gold)}
+.doc-head .btn{background:var(--gold);color:#1C2B24!important}
+.doc-title{padding:44px 20px 52px}
+.doc-title h1{font-size:clamp(34px,6vw,56px);color:var(--on-ever)}
+.doc-title .meta{color:var(--on-ever-2);margin:12px 0 0;font-size:15px}
+.doc-title .meta a{color:var(--gold)}
+main.doc{max-width:780px;margin:0 auto;padding:40px 20px 24px}
+main.doc>h1{display:none}
+main.doc h2{font-size:26px;margin:36px 0 10px;letter-spacing:-.01em}
+main.doc h2:first-of-type{margin-top:0}
+main.doc p.meta{display:none}
+main.doc li{margin-bottom:6px}
+main.doc ul,main.doc ol{padding-left:22px;color:var(--ink2)}
+main.doc table{width:100%;border-collapse:collapse;margin:16px 0;font-size:15px;display:block;overflow-x:auto}
+main.doc th,main.doc td{text-align:left;vertical-align:top;padding:12px 10px;border-bottom:1px solid var(--line);color:var(--ink2)}
+main.doc th{color:var(--ink);background:var(--oat)}
+main.doc strong{color:var(--ink)}
+
+/* responsive */
+@media (max-width:900px){
+  section{padding:72px 0}
+  .hero-grid{grid-template-columns:minmax(0,1fr);gap:8px}
+  .hero-copy{padding-bottom:24px}
+  .hero-phones{height:420px;margin-top:8px}
+  .hero-phones .p1{left:3%;bottom:-60px;width:58%}
+  .hero-phones .p2{right:-2%;bottom:-24px;width:50%}
+  .show,.plans,.three{grid-template-columns:minmax(0,1fr)}
+  .show{gap:40px}
+  .show.flip .show-copy{order:0}
+  .three{gap:28px}
+}
+@media (max-width:420px){.play-badge img{height:56px}.strip{gap:4px}}
+
+/* DailyInfinity Studios company page */
+.co-brand svg{width:32px;height:32px}
+.co-hero{padding:88px 0 56px}
+.co-hero h1{font-size:clamp(46px,8vw,96px);line-height:1;letter-spacing:-.035em;max-width:11em}
+.co-hero h1 em{color:var(--leaf-ink);font-style:normal}
+.co-hero p{font-size:clamp(18px,2.2vw,22px);max-width:30em;margin-top:24px}
+.apps{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.app-row{display:grid;grid-template-columns:96px 1fr auto;gap:8px 28px;align-items:center;padding:28px 0;border-bottom:1px solid var(--line)}
+.app-row img{width:96px;height:96px;border-radius:22px;display:block}
+.app-name{font-size:30px;letter-spacing:-.02em;margin-bottom:4px}
+.app-row p{margin:0;max-width:34em}
+.app-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:flex-end}
+.app-actions .play-badge img{height:48px;width:auto;border-radius:0}
+.link-arrow{font-weight:700;text-decoration:none}
+.link-arrow:hover{text-decoration:underline}
+.app-row.soon{opacity:.8}
+.app-row.soon .ghost{width:96px;height:96px;border-radius:22px;border:2px dashed var(--line);display:grid;place-items:center;font:600 34px Fraunces,serif;color:var(--ink2)}
+.co-note{padding:56px 0 8px}
+@media (max-width:640px){.site-header .wrap{flex-wrap:nowrap}.co-brand{font-size:19px;gap:8px}.co-brand svg{width:26px;height:26px}.site-header .btn{padding:8px 13px;font-size:14px}}
+@media (max-width:760px){
+  .app-row{grid-template-columns:72px 1fr;align-items:start}
+  .app-row img,.app-row.soon .ghost{width:72px;height:72px;border-radius:17px}
+  .app-actions{grid-column:1 / -1;justify-content:flex-start}
+}
